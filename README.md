@@ -1,6 +1,10 @@
 # NezhaStatusWindow
-哪吒探针橱窗改自NodeSeek 
-效果见 https://nz.j8.work
+哪吒探针橱窗改自NodeSeek 的 [88268459](https://www.nodeseek.com/space/670#/discussions)  
+效果:
+ ![](https://i.imgur.com/ydgltHq.png)
+
+已搭建好的探针 https://nz.j8.work
+
 # 使用前 先打开通知权限
 在读取 配置 和 修改配置会有通知,方便查找问题
 ![](https://i.imgur.com/9dUHMmf.png)
