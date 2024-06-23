@@ -29,11 +29,18 @@
         sellingPrice: '出售价格',
         notes: '备注'
     }
-    function showNotification(title, body) {
+    function showNotification(title, body, displayInterval = 5000) {
         if (Notification.permission === "granted") {
-            new Notification("" + title, {
-                body: "" + body,
+            let notification = new Notification("" + title, {
+                body: "" + (body || title),
             });
+            if (displayInterval) {
+                // 设置定时器，5秒后关闭通知
+                setTimeout(() => {
+                    notification.close();
+                }, displayInterval);
+            }
+
         }
     }
     const cycleOptions = [
@@ -196,11 +203,11 @@
             responseType: 'json',
             data: paramsRaw.toString(),
             onload: function (responses) {
-                let res = responses.response;
-                if (res.code == 200) {
+                if (responses.status == 200 && (responses.response.code == 200)) {
                     //alert('更新成功');
                     showNotification('更新成功')
                 } else {
+                    showNotification('更新失败', '可能被防火墙拦截,请检查服务器请求日志', 0)
                     alert(responses.responseText);
                 }
                 clearTimeout(timmer);
